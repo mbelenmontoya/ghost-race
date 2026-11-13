@@ -1,0 +1,129 @@
+.podium {
+  container-type: inline-size;
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-4);
+}
+
+.podium__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.podium__steps {
+  position: relative;
+  inline-size: min(100%, 18rem);
+  margin-inline: auto;
+}
+
+.podium__winner {
+  --face: 24%;
+  position: absolute;
+  translate: -50% -90%;
+  animation: land var(--slow) var(--bounce) backwards;
+}
+
+.podium__winner[data-place='1'] {
+  left: 50%;
+  top: 33%;
+}
+
+.podium__winner[data-place='2'] {
+  left: 21%;
+  top: 47%;
+  animation-delay: 120ms;
+}
+
+.podium__winner[data-place='3'] {
+  left: 79%;
+  top: 60%;
+  animation-delay: 240ms;
+}
+
+.podium__empty {
+  text-align: center;
+}
+
+.podium__list {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.podium__row {
+  --face: var(--face-sm);
+  display: grid;
+  grid-template-columns: 1.25rem auto minmax(0, 1fr) auto 1rem;
+  grid-template-areas: 'place face name km arrow' 'place face count count arrow';
+  align-items: center;
+  column-gap: var(--space-2);
+  inline-size: 100%;
+  min-block-size: var(--tap);
+  padding: var(--space-1) var(--space-3);
+  background: var(--paper);
+  border: var(--line-thin) solid var(--ink);
+  border-radius: var(--radius-sm);
+  text-align: start;
+  transition:
+    background-color var(--fast),
+    transform var(--fast);
+}
+
+.podium__row:hover {
+  background: var(--lime-soft);
+  transform: translateX(0.125rem);
+}
+
+.podium__place {
+  grid-area: place;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+}
+
+.podium__row .face {
+  grid-area: face;
+}
+
+.podium__name {
+  grid-area: name;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-inline-size: 0;
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.podium__km {
+  grid-area: km;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.podium__count {
+  grid-area: count;
+}
+
+.podium__row .icon {
+  grid-area: arrow;
+}
+
+@container (min-width: 22rem) {
+  .podium__row {
+    grid-template-columns: 1.25rem auto minmax(0, 1fr) auto auto 1rem;
+    grid-template-areas: 'place face name km count arrow';
+  }
+}
+
+@keyframes land {
+  from {
+    opacity: 0;
+    transform: translateY(-1.5rem);
+  }
+}

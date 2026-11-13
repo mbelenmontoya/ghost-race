@@ -1,0 +1,39 @@
+.welcome {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: var(--gutter);
+}
+
+.connection {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  inline-size: min(100%, 30rem);
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+}
+
+.connection__art {
+  inline-size: clamp(8rem, 30vw, 12rem);
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.connection[data-state='connecting'] .connection__art {
+  animation: bob 560ms ease-in-out infinite alternate;
+}
+
+.connection[data-state='error'] .connection__art {
+  animation: shake 480ms ease-out;
+}
+
+.connection__title {
+  font-size: var(--text-2xl);
+}
+
+.connection__note {
+  max-inline-size: 22rem;
+  font-size: var(--text-lg);
+  color: var(--muted);
+}

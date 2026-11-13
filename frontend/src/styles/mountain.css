@@ -1,0 +1,216 @@
+.mountain {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'header'
+    'yeti'
+    'slope'
+    'podium'
+    'runs';
+  gap: var(--space-4);
+  inline-size: min(100%, 85rem);
+  min-block-size: 100dvh;
+  margin-inline: auto;
+  padding: var(--gutter);
+}
+
+.mountain__header {
+  grid-area: header;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.mountain__me {
+  --face: 2.5rem;
+  padding-inline-start: var(--space-1);
+}
+
+.mountain__me strong {
+  font-weight: 900;
+}
+
+.mountain__friends {
+  margin-inline-start: auto;
+  padding-inline-start: var(--space-2);
+}
+
+.mountain__faces {
+  --face: 2.375rem;
+  display: flex;
+  padding-inline-end: var(--space-2);
+}
+
+.mountain__faces img + img {
+  margin-inline-start: -0.75rem;
+}
+
+.mountain__invite {
+  display: grid;
+  justify-items: start;
+  line-height: 1.1;
+}
+
+.mountain__invite > :first-child {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-lg);
+}
+
+.slope {
+  grid-area: slope;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  align-content: start;
+  gap: var(--space-4);
+  min-block-size: clamp(18rem, 55dvh, 44rem);
+}
+
+.slope__label {
+  justify-self: start;
+  font-size: var(--text-sm);
+}
+
+.slope__label .icon {
+  inline-size: 1rem;
+}
+
+.slope__hint {
+  grid-row: 2;
+  grid-column: 1;
+  align-self: center;
+  justify-self: center;
+  z-index: 1;
+  padding: var(--space-2) var(--space-4);
+  background: rgb(255 255 255 / 0.92);
+  border: var(--line-thin) solid var(--ink);
+  border-radius: var(--radius-md);
+  font-size: var(--text-lg);
+  font-weight: 800;
+}
+
+.slope__canvas {
+  grid-row: 2;
+  grid-column: 1;
+  position: relative;
+  margin: 4% 8% 6%;
+}
+
+.trails,
+.descent {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: visible;
+}
+
+.trail polyline {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.trail__edge {
+  stroke: var(--ink);
+  stroke-width: 9;
+}
+
+.trail__line {
+  stroke: var(--skier);
+  stroke-width: 5;
+}
+
+.trail__start-edge {
+  stroke: var(--ink);
+  stroke-width: 22;
+}
+
+.trail__start {
+  stroke: var(--paper);
+  stroke-width: 16;
+}
+
+.trail[data-hot='true'] .trail__edge {
+  stroke-width: 13;
+}
+
+.trail[data-hot='true'] .trail__line {
+  stroke-width: 8;
+}
+
+.trails[data-faded='true'] .trail:not([data-hot='true']) .trail__line {
+  opacity: 0.55;
+}
+
+.descent__skier {
+  position: absolute;
+  inline-size: clamp(3rem, 6vw, 5.5rem);
+  aspect-ratio: 1;
+  translate: -50% -82%;
+  filter: drop-shadow(2px 3px 0 rgb(27 21 48 / 0.35));
+}
+
+.descent__skier[data-done='true'] {
+  animation: land-skier 420ms var(--bounce);
+}
+
+@keyframes land-skier {
+  50% {
+    transform: translateY(-0.75rem) rotate(-8deg);
+  }
+}
+
+.mountain__yeti {
+  grid-area: yeti;
+  display: grid;
+  justify-items: center;
+}
+
+.mountain__podium {
+  grid-area: podium;
+  display: grid;
+}
+
+.mountain__runs {
+  grid-area: runs;
+  align-self: start;
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.mountain__runs-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+@media (min-width: 48rem) {
+  .mountain {
+    grid-template-columns: minmax(0, 1fr) minmax(20rem, 34rem);
+    grid-template-rows: auto auto auto 1fr;
+    grid-template-areas:
+      'header header'
+      'slope yeti'
+      'slope podium'
+      'slope runs';
+    column-gap: var(--space-6);
+  }
+}
+
+@media (min-width: 72rem) {
+  .mountain {
+    grid-template-columns: minmax(0, 1fr) auto minmax(16rem, 20rem);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      'header header header'
+      'slope yeti podium'
+      'slope runs runs';
+  }
+}

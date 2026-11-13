@@ -1,0 +1,50 @@
+.toast {
+  --face: 3.25rem;
+  position: fixed;
+  inset-inline-start: var(--gutter);
+  inset-block-end: var(--gutter);
+  z-index: var(--layer-toast);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: var(--space-3);
+  inline-size: min(100% - 2 * var(--gutter), 28rem);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3);
+  border-radius: 1.25rem;
+  box-shadow: 5px 5px 0 var(--ink);
+  animation: slide-in var(--slow) var(--bounce);
+}
+
+.toast__text {
+  display: grid;
+  gap: 0.125rem;
+  min-inline-size: 0;
+}
+
+.toast__text strong {
+  font-weight: 900;
+}
+
+.toast__badge {
+  justify-self: start;
+  padding: 0 var(--space-2);
+  background: var(--lime);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.toast__close {
+  background: transparent;
+  border-color: transparent;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+}

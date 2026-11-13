@@ -1,0 +1,99 @@
+.skier-card__scrim {
+  z-index: var(--layer-overlay);
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  padding: var(--gutter);
+  overflow-y: auto;
+}
+
+.skier-card {
+  container-type: inline-size;
+  display: grid;
+  gap: var(--space-4);
+  inline-size: min(100%, 74rem);
+  padding: var(--space-4) clamp(var(--space-4), 3vw, var(--space-6)) var(--space-6);
+  animation: pop var(--slow) var(--bounce);
+}
+
+.skier-card__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.skier-card__who {
+  --face: var(--face-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.skier-card__who .heading {
+  font-size: var(--text-2xl);
+}
+
+.skier-card__chips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: var(--space-2);
+  flex: 1 1 28rem;
+  margin: 0;
+}
+
+.skier-card__body {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.skier-card__slope {
+  padding: var(--space-3);
+  border-radius: 1.375rem;
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.skier-card__canvas {
+  position: relative;
+  aspect-ratio: 1;
+  padding: 8%;
+  overflow: hidden;
+  border: var(--line-thin) solid var(--ink);
+  border-radius: var(--radius-md);
+  background: linear-gradient(var(--snow), var(--snow-soft) 55%, var(--paper));
+}
+
+.skier-card__canvas .trails,
+.skier-card__canvas .descent {
+  inset: 8%;
+  inline-size: 84%;
+  block-size: 84%;
+}
+
+.skier-card__empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: var(--text-lg);
+}
+
+.skier-card__list {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+}
+
+.skier-card__list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+@container (min-width: 48rem) {
+  .skier-card__body {
+    grid-template-columns: minmax(0, 34rem) minmax(0, 1fr);
+    align-items: start;
+  }
+}

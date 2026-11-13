@@ -1,0 +1,84 @@
+.pick {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-6);
+  inline-size: min(100%, 35rem);
+  padding: var(--space-8) clamp(var(--space-4), 5vw, 2.5rem);
+  text-align: center;
+}
+
+.pick__faces {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+  gap: var(--space-4);
+  inline-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.pick__faces legend {
+  margin-inline: auto;
+  margin-block-end: var(--space-3);
+  font-size: var(--text-xl);
+  font-weight: 800;
+}
+
+.pick__face {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+.pick__face img {
+  inline-size: clamp(5.5rem, 22vw, 8rem);
+  aspect-ratio: 1;
+  object-fit: contain;
+  padding: var(--space-1);
+  border: 4px solid transparent;
+  border-radius: 50%;
+  transition:
+    transform var(--fast) var(--bounce),
+    background-color var(--fast);
+}
+
+.pick__face span {
+  font-size: var(--text-md);
+  text-transform: capitalize;
+}
+
+.pick__face:hover img {
+  transform: translateY(-0.25rem);
+}
+
+.pick__face:has(:checked) img {
+  background: var(--lime-soft);
+  border-color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.pick__face:has(:checked) span {
+  font-weight: 900;
+}
+
+.pick__face:has(:focus-visible) img {
+  outline: var(--line) solid var(--ink);
+  outline-offset: 3px;
+}
+
+.pick__name {
+  display: grid;
+  gap: var(--space-2);
+  inline-size: min(100%, 21rem);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  text-align: start;
+}
+
+.pick__error {
+  padding: var(--space-2) var(--space-4);
+  background: var(--blush);
+  border: var(--line-thin) solid var(--ink);
+  border-radius: var(--radius-pill);
+}

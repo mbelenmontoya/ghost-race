@@ -1,0 +1,120 @@
+.yeti {
+  --halo: var(--paper);
+  --chip: var(--paper);
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: var(--space-2);
+}
+
+.yeti[data-state='saving'] {
+  --halo: var(--ice);
+  --chip: var(--ice);
+}
+
+.yeti[data-state='descending'] {
+  --halo: var(--lime-soft);
+  --chip: var(--lime);
+}
+
+.yeti[data-state='happy'] {
+  --halo: var(--sun-soft);
+  --chip: var(--sun);
+}
+
+.yeti[data-state='error'] {
+  --halo: var(--blush);
+  --chip: var(--blush);
+}
+
+.yeti__button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: clamp(9rem, 22vw, 14rem);
+  aspect-ratio: 1;
+  padding: 6%;
+  background: var(--halo);
+  border: var(--line) solid var(--ink);
+  border-radius: 50%;
+  box-shadow: 5px 5px 0 var(--ink);
+  transition:
+    background-color var(--fast),
+    transform var(--fast);
+}
+
+.yeti__button:active:not(:disabled) {
+  transform: translate(3px, 3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.yeti__art {
+  grid-area: 1 / 1;
+  inline-size: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.yeti__art--peek {
+  opacity: 0;
+}
+
+.yeti[data-state='idle'] .yeti__button:is(:hover, :focus-visible) {
+  --halo: var(--lime-soft);
+}
+
+.yeti__button:is(:hover, :focus-visible) .yeti__art--peek {
+  opacity: 1;
+}
+
+.yeti__button:has(.yeti__art--peek):is(:hover, :focus-visible) .yeti__art:first-child {
+  opacity: 0;
+}
+
+.yeti[data-state='saving'] .yeti__art {
+  animation: bob var(--slow) ease-in-out infinite alternate;
+}
+
+.yeti[data-state='descending'] .yeti__art {
+  animation: wobble 260ms ease-in-out infinite alternate;
+}
+
+.yeti[data-state='happy'] .yeti__art {
+  animation: hop 560ms ease-in-out infinite;
+}
+
+.yeti[data-state='error'] .yeti__art {
+  animation: shake 480ms ease-out;
+}
+
+.yeti__message {
+  max-inline-size: 15rem;
+  padding: var(--space-2) var(--space-4);
+  background: var(--chip);
+  border: var(--line-thin) solid var(--ink);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-md);
+  font-size: var(--text-md);
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+  transition: background-color var(--fast);
+}
+
+@keyframes wobble {
+  from {
+    transform: rotate(-7deg) translateX(-0.25rem);
+  }
+  to {
+    transform: rotate(7deg) translateX(0.25rem);
+  }
+}
+
+@keyframes hop {
+  50% {
+    transform: translateY(-1rem) scale(1.04, 0.97);
+  }
+  85% {
+    transform: scale(1.03, 0.95);
+  }
+}

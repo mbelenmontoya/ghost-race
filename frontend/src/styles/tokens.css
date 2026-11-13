@@ -1,0 +1,73 @@
+:root {
+  --ink: #1b1530;
+  --cream: #fff8ec;
+  --paper: #ffffff;
+  --lime: #c6f432;
+  --lime-soft: #e9fcb8;
+  --muted: #4a4560;
+  --sky: #8fdcf5;
+  --ice: #d3f6f8;
+  --sun: #ffe36b;
+  --sun-soft: #fff3b0;
+  --blush: #ffd6ea;
+  --snow: #d9e9f7;
+  --snow-soft: #eef5fc;
+  --live: #7bc70a;
+  --scrim: rgb(27 21 48 / 0.5);
+
+  --font-display: 'Lilita One', 'Nunito', sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.9375rem;
+  --text-lg: 1.0625rem;
+  --text-xl: clamp(1.25rem, 1rem + 1vw, 1.625rem);
+  --text-2xl: clamp(1.625rem, 1.2rem + 1.6vw, 2.125rem);
+  --text-display: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --gutter: clamp(0.75rem, 0.4rem + 1.6vw, 2rem);
+
+  --radius-sm: 0.875rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 1.875rem;
+  --radius-pill: 999px;
+
+  --line: 3px;
+  --line-thin: 2.5px;
+  --shadow-sm: 2px 2px 0 var(--ink);
+  --shadow-md: 3px 3px 0 var(--ink);
+  --shadow-lg: 6px 6px 0 var(--ink);
+  --shadow-xl: 8px 8px 0 var(--ink);
+
+  --face-sm: 2.25rem;
+  --face-md: 2.75rem;
+  --face-lg: 4rem;
+  --tap: 2.75rem;
+
+  --fast: 160ms;
+  --slow: 520ms;
+  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --layer-toast: 5;
+  --layer-overlay: 8;
+  --layer-drawer: 10;
+}
+
+[data-color='pink'] {
+  --skier: #e8579b;
+}
+[data-color='lilac'] {
+  --skier: #a98bd6;
+}
+[data-color='black'] {
+  --skier: #26232b;
+}
